@@ -1,11 +1,64 @@
-package Vistas;
+package Vista;
 
-public class RegistrarProducto extends javax.swing.JFrame {
+import Controlador.ProductoController;
+import Modelo.ProductoModelo;
+import javax.swing.JOptionPane;
 
-    public RegistrarProducto() {
+public class ProductoVistaRegistrar extends javax.swing.JFrame {
+    
+    public ProductoVistaRegistrar() {
         initComponents();
+        this.setLocationRelativeTo(null);
+        this.setResizable(false);
     }
 
+    /*
+    METODOS UXILIARES
+     */
+    // Limpia Campos del Formulario
+    private void limpiarCampos() {
+        txtCodigo.setText("");
+        txtNombre.setText("");
+        txtPrecio.setText("");
+        cboCategoria.setSelectedItem(0);
+        cbxCompra.setSelected(false);
+        cbxVenta.setSelected(false);
+        cbxObsequio.setSelected(false);
+        rbActivo.setSelected(false);
+        rbInactivo.setSelected(false);
+    }
+
+    // Valida Campos del Formulario
+    private boolean validaCampos() {
+        if (txtCodigo.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Complete el campo Código", "Advetencia", JOptionPane.WARNING_MESSAGE);
+            return false;
+        } else if (txtNombre.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Complete el campo Nomnbre", "Advetencia", JOptionPane.WARNING_MESSAGE);
+            return false;
+        } else if (cboCategoria.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(null, "Tiene que selecionar una Categoría", "Advetencia", JOptionPane.WARNING_MESSAGE);
+            return false;
+        } else if (txtPrecio.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Complete el campo Precio", "Advetencia", JOptionPane.WARNING_MESSAGE);
+            return false;
+        } else if (!esDouble(txtPrecio.getText())) {
+            JOptionPane.showMessageDialog(null, "El precio no es correcto", "Advetencia", JOptionPane.WARNING_MESSAGE);
+            return false;
+        }
+        return true;
+    }
+
+    // Valida que el dato es double
+    private boolean esDouble(String texto) {
+        try {
+            Double.parseDouble(texto);
+            return true;   // Es un double válido
+        } catch (NumberFormatException e) {
+            return false;  // No se puede convertir (letras, vacío, etc.)
+        }
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -215,6 +268,29 @@ public class RegistrarProducto extends javax.swing.JFrame {
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
         System.out.println("Registrar");
+        if (this.validaCampos()) {
+            ProductoModelo productoModelo = new ProductoModelo();
+            productoModelo.setNombre(txtNombre.getText());
+            productoModelo.setCodigo(txtCodigo.getText());
+            productoModelo.setCategoria(cboCategoria.getSelectedItem().toString());
+            productoModelo.setCompra(cbxCompra.isSelected());
+            productoModelo.setVenta(cbxVenta.isSelected());
+            productoModelo.setObsequio(cbxObsequio.isSelected());
+            productoModelo.setPrecio(Double.parseDouble(txtPrecio.getText()));
+            if (rbActivo.isSelected() == true) {
+                productoModelo.setEstado("Activo");
+            } else {
+                productoModelo.setEstado("Inactivo");
+            }
+            ProductoController productoController = new ProductoController();
+            boolean respuesta = productoController.registrar(productoModelo);
+            if (respuesta == true) {
+                JOptionPane.showMessageDialog(null, "Producto " + productoModelo.getNombre() + "registrado correctamente", "Registrado", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(null, "Hubo un problema al registrar el producto", "Error de registro", JOptionPane.ERROR_MESSAGE);
+            }
+            this.limpiarCampos();
+        }
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
     /**
@@ -234,20 +310,23 @@ public class RegistrarProducto extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(RegistrarProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ProductoVistaRegistrar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(RegistrarProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ProductoVistaRegistrar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(RegistrarProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ProductoVistaRegistrar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(RegistrarProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ProductoVistaRegistrar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new RegistrarProducto().setVisible(true);
+                new ProductoVistaRegistrar().setVisible(true);
             }
         });
     }

@@ -1,6 +1,6 @@
 package Modelo;
 
-public class Producto {
+public class ProductoModelo {
 
     private int id;
     private String nombre;
@@ -11,9 +11,6 @@ public class Producto {
     private boolean obsequio;
     private double precio;
     private String estado;
-
-    public Producto() {
-    }
 
     public int getId() {
         return id;
