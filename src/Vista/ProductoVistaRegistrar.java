@@ -5,11 +5,14 @@ import Modelo.ProductoModelo;
 import javax.swing.JOptionPane;
 
 public class ProductoVistaRegistrar extends javax.swing.JFrame {
-    
-    public ProductoVistaRegistrar() {
+
+    private ProductoVistaListar productoVistaListar;
+
+    public ProductoVistaRegistrar(ProductoVistaListar productoVistaListar) {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setResizable(false);
+        this.productoVistaListar = productoVistaListar;
     }
 
     /*
@@ -58,7 +61,7 @@ public class ProductoVistaRegistrar extends javax.swing.JFrame {
             return false;  // No se puede convertir (letras, vacío, etc.)
         }
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -262,8 +265,7 @@ public class ProductoVistaRegistrar extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        // Salir de la aplicacion
-        System.exit(0);
+        this.dispose(); // Cierra este JFrame solo esta ventana
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
@@ -290,6 +292,7 @@ public class ProductoVistaRegistrar extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Hubo un problema al registrar el producto", "Error de registro", JOptionPane.ERROR_MESSAGE);
             }
             this.limpiarCampos();
+            this.productoVistaListar.cargarProductos();
         }
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
@@ -326,7 +329,7 @@ public class ProductoVistaRegistrar extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ProductoVistaRegistrar().setVisible(true);
+                new ProductoVistaRegistrar(null).setVisible(true);
             }
         });
     }

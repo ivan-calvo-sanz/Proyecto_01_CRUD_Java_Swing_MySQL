@@ -1,12 +1,12 @@
 package App;
 
-import Vista.ProductoVistaRegistrar;
+import Vista.ProductoVistaListar;
 
 public class Main {
 
     public static void main(String[] args) {
-        ProductoVistaRegistrar productoVistaRegistrar = new ProductoVistaRegistrar();
-        productoVistaRegistrar.setVisible(true);
+        ProductoVistaListar productoVistaListar = new ProductoVistaListar();
+        productoVistaListar.setVisible(true);
     }
 
 }

@@ -3,10 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/00_ICALVO_ESCRITORIO/ICSProgramacion/0_Java/00_PROYECTOS/Proyecto_01_CRUD_Java_Swing_MySQL/src/Vistas/RegistrarProducto.java</file>
-            <file>file:/D:/00_ICALVO_ESCRITORIO/ICSProgramacion/0_Java/00_PROYECTOS/Proyecto_01_CRUD_Java_Swing_MySQL/src/Conexion/ConexionMysql.java</file>
-            <file>file:/D:/00_ICALVO_ESCRITORIO/ICSProgramacion/0_Java/00_PROYECTOS/Proyecto_01_CRUD_Java_Swing_MySQL/src/newpackage/Main.java</file>
-            <file>file:/D:/00_ICALVO_ESCRITORIO/ICSProgramacion/0_Java/00_PROYECTOS/Proyecto_01_CRUD_Java_Swing_MySQL/src/BBDD/Sentencias_SQL.java</file>
+            <file>file:/D:/00_ICALVO_ESCRITORIO/ICSProgramacion/0_Java/00_PROYECTOS/Proyecto_01_CRUD_Java_Swing_MySQL/src/Vista/ProductoVistaRegistrar.java</file>
+            <file>file:/D:/00_ICALVO_ESCRITORIO/ICSProgramacion/0_Java/00_PROYECTOS/Proyecto_01_CRUD_Java_Swing_MySQL/README.md</file>
+            <file>file:/D:/00_ICALVO_ESCRITORIO/ICSProgramacion/0_Java/00_PROYECTOS/Proyecto_01_CRUD_Java_Swing_MySQL/src/Vista/ProductoVistaListar.java</file>
         </group>
     </open-files>
 </project-private>
